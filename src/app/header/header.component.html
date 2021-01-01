@@ -17,16 +17,15 @@
     </span>
 </mat-toolbar-row>
   <mat-toolbar-row class="tool-nav">
-    <a mat-flat-button disableRipple>Home</a>
-
-    <a mat-flat-button disableRipple [matMenuTriggerFor]="belowMenu">Below</a>
-    <mat-menu #belowMenu="matMenu" yPosition="below">
-      <a mat-menu-item disableRipple>Item 1</a>
-      <a mat-menu-item disableRipple>Item 2</a>
-    </mat-menu>
-
-    <a mat-flat-button disableRipple>Before</a>
-
-    <a mat-flat-button disableRipple>After</a>
+    <a mat-flat-button disableRipple>HOME</a>
+    <a mat-flat-button disableRipple [matMenuTriggerFor]="belowMenu">SHOP</a>
+    <a mat-flat-button disableRipple>PRESS</a>
+    <a mat-flat-button disableRipple>ABOUT</a>
+    <a mat-flat-button disableRipple>CONTACT</a>
   </mat-toolbar-row>
 </mat-toolbar>
+
+<mat-menu #belowMenu="matMenu" yPosition="below">
+  <a mat-menu-item disableRipple>Item 1</a>
+  <a mat-menu-item disableRipple>Item 2</a>
+</mat-menu>

@@ -1,7 +1,18 @@
 <div style="display: flex;flex-direction: column">
   <div class="footer-content">
     <div class="subscriber-us">
-      <span>JOIN OUR NEWSLETTER</span>
+      <div>
+        <span>JOIN OUR NEWSLETTER</span>
+        <ng-form>
+          <mat-form-field appearance="standard">
+            <mat-label>Enter your email here</mat-label>
+            <label>
+              <input matInput type="email" required>
+            </label>
+          </mat-form-field>
+          <button mat-flat-button disableRipple type="submit" class="subscribe-button">Subscribe Now</button>
+        </ng-form>
+      </div>
     </div>
     <div class="hot-href">
       <div>

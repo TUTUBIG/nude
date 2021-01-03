@@ -1,11 +1,12 @@
-<div style="display: flex;justify-content: center">
-  <div class="banner">
-    <p>DISCOVER YOUR NEW ADDICTION</p>
-    <p>Mineral Based Makeup Products</p>
-    <p>SHOP NOW ></p>
-  </div>
-  <section></section>
-  <div></div>
-  <section></section>
-</div>
+<mat-carousel timings="500ms ease-in" [autoplay]=true [hideArrows]=true [hideIndicators]=false [interval]=3000 [useKeyboard]=false>
+  <mat-carousel-slide *ngFor="let banner of banners" [image]=banner class="banner-text-bottom">
+    <p class="banner-text-top">DISCOVER YOUR NEW ADDICTION</p>
+    <p class="banner-text-medium">Mineral Based Makeup Products</p>
+    <p class="banner-text-bottom"><a>SHOP NOW ></a></p>
+  </mat-carousel-slide>
+</mat-carousel>
+<section></section>
+<div></div>
+<section></section>
+
 

@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import { HomeComponent } from './content/home/home.component';
+import {MatCarouselModule} from '@ngmodule/material-carousel';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HomeComponent } from './content/home/home.component';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatCarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

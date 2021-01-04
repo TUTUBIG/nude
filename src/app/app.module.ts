@@ -14,9 +14,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
+import { FormsModule  } from '@angular/forms';
 import { HomeComponent } from './content/home/home.component';
-import {MatCarouselModule} from '@ngmodule/material-carousel';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { ListComponent } from './content/goods/list/list.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {MatCarouselModule} from '@ngmodule/material-carousel';
     HeaderComponent,
     ContentComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import {MatCarouselModule} from '@ngmodule/material-carousel';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatCarouselModule.forRoot()
+    MatCarouselModule.forRoot(),
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

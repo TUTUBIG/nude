@@ -1,12 +1,32 @@
-<mat-carousel timings="500ms ease-in" [autoplay]=true [hideArrows]=true [hideIndicators]=false [interval]=3000 [useKeyboard]=false>
-  <mat-carousel-slide *ngFor="let banner of banners" [image]=banner class="banner-text-bottom">
-    <p class="banner-text-top">DISCOVER YOUR NEW ADDICTION</p>
-    <p class="banner-text-medium">Mineral Based Makeup Products</p>
-    <p class="banner-text-bottom"><a>SHOP NOW ></a></p>
-  </mat-carousel-slide>
-</mat-carousel>
-<section></section>
-<div></div>
-<section></section>
+<div class="banner-images">
+  <mat-carousel timings="500ms ease-in" [autoplay]=true [hideArrows]=true [hideIndicators]=false [interval]=3000 [useKeyboard]=false>
+    <mat-carousel-slide *ngFor="let banner of banners" [image]=banner>
+      <p class="banner-text-top">DISCOVER YOUR NEW ADDICTION</p>
+      <p class="banner-text-medium">Mineral Based Makeup Products</p>
+      <p class="banner-text-bottom"><a>SHOP NOW ></a></p>
+    </mat-carousel-slide>
+  </mat-carousel>
+  <section class="section-one">
+    <div style="position: relative">
+      <img style="width: 100%" src="assets/section/1.webp" alt="">
+      <div style="position: absolute;top: 12%;left: 12%">
+        <p class="banner-text-top">SEASONAL ESSENTIALS</p>
+        <p class="banner-text-medium">Must Have Moisturizing Lip Care</p>
+        <p class="banner-text-bottom"><a>SHOP NOW ></a></p>
+      </div>
+    </div>
+    <div style="position: relative">
+      <img style="width: 100%" src="assets/section/2.webp" alt="">
+      <div style="position: absolute;top: 12%;left: 12%">
+        <p class="banner-text-top">START FRESH</p>
+        <p class="banner-text-medium">New Makeup Removers</p>
+        <p class="banner-text-bottom"><a>SHOP NOW ></a></p>
+      </div>
+    </div>
+  </section>
+  <div></div>
+  <section></section>
+</div>
+
 
 

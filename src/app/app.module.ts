@@ -19,6 +19,7 @@ import { HomeComponent } from './content/home/home.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { ListComponent } from './content/goods/list/list.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { PressComponent } from './content/press/press.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     ContentComponent,
     FooterComponent,
     HomeComponent,
-    ListComponent
+    ListComponent,
+    PressComponent
   ],
   imports: [
     BrowserModule,

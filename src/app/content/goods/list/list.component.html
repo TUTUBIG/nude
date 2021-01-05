@@ -1,24 +1,17 @@
-<mat-grid-list cols="3" gutterSize="2px" class="mat-grid-list" >
-  <mat-grid-tile>
-    <img src="assets/goods/list/1.webp" alt="resource not exist">
-    <mat-grid-tile-footer>Quick View</mat-grid-tile-footer>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <img src="assets/goods/list/2.webp" alt="resource not exist">
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <img src="assets/goods/list/3.webp" alt="resource not exist">
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <img src="assets/goods/list/4.webp" alt="resource not exist">
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <img src="assets/goods/list/5.webp" alt="resource not exist">
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <img src="assets/goods/list/6.webp" alt="resource not exist">
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <img src="assets/goods/list/7.webp" alt="resource not exist">
-  </mat-grid-tile>
-</mat-grid-list>
+<div style="width: 1000px">
+  <mat-grid-list rowHeight="500px" cols="3" gutterSize="2px" class="mat-grid-list">
+    <mat-grid-tile *ngFor="let image of images">
+      <div style="font-family: serif">
+        <img src="{{ image }}" alt="resource not exist">
+        <p>Satin Powder Blush</p>
+        <p>$ 20.00</p>
+        <div class="number-increase-decrease">
+          <span>-</span>
+          <span>1</span>
+          <span>+</span>
+        </div>
+        <p style="text-align: center;margin-top: 10px"><a>ADD TO CART></a></p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

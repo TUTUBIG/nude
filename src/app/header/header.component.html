@@ -17,11 +17,11 @@
     </span>
 </mat-toolbar-row>
   <mat-toolbar-row class="tool-nav">
-    <a mat-flat-button disableRipple>HOME</a>
-    <a mat-flat-button disableRipple [matMenuTriggerFor]="belowMenu">SHOP</a>
-    <a mat-flat-button disableRipple>PRESS</a>
-    <a mat-flat-button disableRipple>ABOUT</a>
-    <a mat-flat-button disableRipple>CONTACT</a>
+    <a routerLink="/home" mat-flat-button disableRipple>HOME</a>
+    <a routerLink="/shop" mat-flat-button disableRipple [matMenuTriggerFor]="belowMenu">SHOP</a>
+    <a routerLink="/press" mat-flat-button disableRipple>PRESS</a>
+    <a routerLink="/about" mat-flat-button disableRipple>ABOUT</a>
+    <a routerLink="/contact" mat-flat-button disableRipple>CONTACT</a>
   </mat-toolbar-row>
 </mat-toolbar>
 

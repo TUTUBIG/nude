@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="cart">
+    <span class="title">My Cart</span>
+    <ul>
+      <li *ngFor="let good of goods">
+        <div class="li-container">
+          <div class="li-container-left">
+            <span>
+              <img src="{{ good.image }}" alt="">
+            </span>
+            <div class="li-container-left-right">
+              <span>{{ good.name}}</span>
+              <span>${{ good.price }}</span>
+              <div class="li-container-left-right-goods-count">
+                <button mat-flat-button>-</button>
+                <span>{{ good.count }}</span>
+                <button mat-flat-button>+</button>
+              </div>
+            </div>
+          </div>
+          <div class="li-container-right">
+            <span>${{ good.price*good.count }}</span>
+            <button mat-flat-button>X</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="summary"></div>
+</div>

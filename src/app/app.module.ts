@@ -21,6 +21,8 @@ import { ListComponent } from './content/goods/list/list.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PressComponent } from './content/press/press.component';
 import { AboutComponent } from './content/about/about.component';
+import { CartCheckoutComponent } from './shop/cart-checkout/cart-checkout.component';
+import { SideCartComponent } from './shop/side-cart/side-cart.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { AboutComponent } from './content/about/about.component';
     HomeComponent,
     ListComponent,
     PressComponent,
-    AboutComponent
+    AboutComponent,
+    CartCheckoutComponent,
+    SideCartComponent
   ],
   imports: [
     BrowserModule,

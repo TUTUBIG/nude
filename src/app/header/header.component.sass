@@ -37,5 +37,9 @@ $primary-color: rgba(245 231 223)
   a:hover
     color: $primary-color
 
-.panel
-  background-color: red
+::ng-deep .custom-menu
+  box-shadow: none
+  .mat-menu-item:hover
+    background: transparent
+    color: $primary-color
+

@@ -12,19 +12,41 @@
               <span>{{ good.name}}</span>
               <span>${{ good.price }}</span>
               <div class="li-container-left-right-goods-count">
-                <button mat-flat-button>-</button>
+                <button mat-flat-button disableRipple>-</button>
                 <span>{{ good.count }}</span>
-                <button mat-flat-button>+</button>
+                <button mat-flat-button disableRipple>+</button>
               </div>
             </div>
           </div>
           <div class="li-container-right">
             <span>${{ good.price*good.count }}</span>
-            <button mat-flat-button>X</button>
+            <button mat-icon-button disableRipple><mat-icon>clear</mat-icon></button>
           </div>
         </div>
       </li>
     </ul>
   </div>
-  <div class="summary"></div>
+  <div class="summary">
+    <span class="title">Order Summary</span>
+    <div class="summary-middle">
+      <p>
+        <span>Subtotal</span>
+        <span>${{ summary.subtotal }}</span>
+      </p>
+      <p>
+        <span>Shipping</span>
+        <span>${{ summary.shipFee }}</span>
+      </p>
+      <p>
+        <a>
+          {{ summary.shipDestination }}
+        </a>
+      </p>
+    </div>
+    <div class="summary-bottom">
+      <span>Total</span>
+      <span>${{ summary.total }}</span>
+    </div>
+    <button class="checkout-button" mat-flat-button>Checkout</button>
+  </div>
 </div>

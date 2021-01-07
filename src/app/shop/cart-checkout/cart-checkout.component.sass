@@ -1,20 +1,21 @@
+.title
+  display: block
+  width: 100%
+  font-size: x-large
+  font-weight: 100
+  font-family: sans-serif
+  letter-spacing: 0.1em
+  padding-left: 7px
+  padding-bottom: 20px
+  border-bottom-style: groove
+  border-bottom-width: 1px
+
 .container
   display: flex
   width: 800px
   justify-content: space-between
   .cart
     width: 60%
-    .title
-      display: block
-      width: 100%
-      font-size: x-large
-      font-weight: 100
-      font-family: sans-serif
-      letter-spacing: 0.1em
-      padding-left: 7px
-      padding-bottom: 20px
-      border-bottom-style: groove
-      border-bottom-width: 1px
     ul
       list-style: none
       padding-left: 5px
@@ -22,6 +23,7 @@
         display: flex
         justify-content: space-between
         padding-bottom: 10px
+        padding-top: 10px
         border-bottom-style: groove
         border-bottom-width: 1px
         .li-container-left
@@ -35,6 +37,25 @@
             .li-container-left-right-goods-count
               border-style: groove
               border-width: 1px
-
   .summary
     width: 30%
+    .summary-middle
+      border-bottom-style: groove
+      border-bottom-width: 1px
+      padding-top: 10px
+      padding-bottom: 10px
+      p
+        display: flex
+        justify-content: space-between
+    .summary-bottom
+      display: flex
+      justify-content: space-between
+      padding-top: 15px
+      font-size: x-large
+    .checkout-button
+      background-color: black
+      color: white
+      margin-top: 30px
+      width: 100%
+
+

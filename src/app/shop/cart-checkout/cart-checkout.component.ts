@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, SimpleChange} from '@angular/core';
 
 interface CartGoodInfo {
   name: string;
@@ -7,12 +7,25 @@ interface CartGoodInfo {
   image: string;
 }
 
+interface SummaryInfo {
+  subtotal: number;
+  shipDestination: string;
+  shipFee: number;
+  total: number;
+}
+
 @Component({
   selector: 'app-cart-checkout',
   templateUrl: './cart-checkout.component.html',
   styleUrls: ['./cart-checkout.component.sass']
 })
 export class CartCheckoutComponent implements OnInit {
+  summary: SummaryInfo = {
+    subtotal: 123.23,
+    shipDestination: 'Shanghai,China',
+    shipFee: 2.32,
+    total: 11.21
+  };
   goods: CartGoodInfo[] = [
     {
       name: 'I\'m a product',
@@ -36,7 +49,5 @@ export class CartCheckoutComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

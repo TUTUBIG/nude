@@ -24,6 +24,8 @@ import { AboutComponent } from './content/about/about.component';
 import { CartCheckoutComponent } from './shop/cart-checkout/cart-checkout.component';
 import { SideCartComponent } from './shop/side-cart/side-cart.component';
 
+import { CarouselModule } from 'primeng/carousel';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,8 @@ import { SideCartComponent } from './shop/side-cart/side-cart.component';
     MatInputModule,
     FormsModule,
     MatCarouselModule.forRoot(),
-    MatGridListModule
+    MatGridListModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

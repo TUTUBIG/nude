@@ -24,7 +24,11 @@
       </div>
     </div>
   </section>
-  <div></div>
+  <p-carousel [value]="products" [numVisible]="3" [numScroll]="1" [circular]=true>
+    <ng-template let-product pTemplate="item">
+      <img style="width: 80%" src="{{ product.imageUrl }}" alt="">
+    </ng-template>
+  </p-carousel>
   <section></section>
 </div>
 

@@ -9,7 +9,7 @@
   <section class="section-one">
     <div style="position: relative;width: 48%">
       <img style="width: 100%" src="assets/section/1.webp" alt="">
-      <div style="position: absolute;top: 15%;left: 15%;color: white">
+      <div style="position: absolute;top: 50%;left: 50%;text-transform: full-width;color: white">
         <p class="banner-text-top">SEASONAL ESSENTIALS</p>
         <p class="banner-text-medium">Must Have Moisturizing Lip Care</p>
         <p class="banner-text-bottom"><a>SHOP NOW ></a></p>
@@ -24,7 +24,7 @@
       </div>
     </div>
   </section>
-  <p-carousel [value]="products" [numVisible]="3" [numScroll]="1" [circular]=true>
+  <p-carousel [value]="products" [numVisible]="3" [numScroll]="1" [circular]=true style="text-align: center">
     <ng-template let-product pTemplate="item">
       <img style="width: 80%" src="{{ product.imageUrl }}" alt="">
     </ng-template>

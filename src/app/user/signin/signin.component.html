@@ -1,0 +1,50 @@
+<div>
+  <p>Log In</p>
+  <p>
+    <span>New to Whisper</span>
+    <span>
+      <a href="/signup">SignUp</a>
+    </span>
+  </p>
+  <form [formGroup]="emailLogin" (ngSubmit)="login()" class="login-input">
+    <mat-form-field class="email" appearance="fill">
+      <mat-label>Email</mat-label>
+      <label>
+        <input type="email" matInput [formControl]="email" required>
+      </label>
+      <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="email.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <P>
+      <mat-form-field class="password" appearance="fill">
+        <mat-label>Password</mat-label>
+        <label>
+          <input matInput [type]="hide ? 'password' : 'text'" required minlength="8" maxlength="15" [formControl]="password">
+        </label>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.invalid">Please use a strong password</mat-error>
+      </mat-form-field>
+    </P>
+    <P>
+      <mat-form-field class="confirm" appearance="fill">
+        <mat-label>Confirm</mat-label>
+        <label>
+          <input matInput [type]="hide ? 'password' : 'text'" required minlength="8" maxlength="15" [formControl]="confirm">
+        </label>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error>Password doesn't match</mat-error>
+      </mat-form-field>
+    </P>
+    <button mat-button type="submit" [disabled]="!emailLogin.valid">Submit</button>
+    <button mat-button type="reset" [disabled]="!emailLogin.dirty">Cancel</button>
+  </form>
+</div>
+

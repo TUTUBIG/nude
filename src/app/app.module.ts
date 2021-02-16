@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
+import { CarouselModule } from 'primeng/carousel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule  } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './content/home/home.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { ListComponent } from './content/goods/list/list.component';
@@ -23,8 +26,8 @@ import { PressComponent } from './content/press/press.component';
 import { AboutComponent } from './content/about/about.component';
 import { CartCheckoutComponent } from './shop/cart-checkout/cart-checkout.component';
 import { SideCartComponent } from './shop/side-cart/side-cart.component';
-
-import { CarouselModule } from 'primeng/carousel';
+import { SignupComponent } from './user/signup/signup.component';
+import { SigninComponent } from './user/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -37,12 +40,15 @@ import { CarouselModule } from 'primeng/carousel';
     PressComponent,
     AboutComponent,
     CartCheckoutComponent,
-    SideCartComponent
+    SideCartComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
@@ -52,7 +58,8 @@ import { CarouselModule } from 'primeng/carousel';
     FormsModule,
     MatCarouselModule.forRoot(),
     MatGridListModule,
-    CarouselModule
+    CarouselModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

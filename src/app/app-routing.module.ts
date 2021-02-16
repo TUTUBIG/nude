@@ -5,6 +5,8 @@ import { ListComponent } from './content/goods/list/list.component';
 import { PressComponent } from './content/press/press.component';
 import { AboutComponent } from './content/about/about.component';
 import {CartCheckoutComponent} from './shop/cart-checkout/cart-checkout.component';
+import {SigninComponent} from './user/signin/signin.component';
+import {SignupComponent} from './user/signup/signup.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -13,7 +15,9 @@ const routes: Routes = [
   { path: 'press', component: PressComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: HomeComponent },
-  { path: 'cart', component: CartCheckoutComponent }
+  { path: 'cart', component: CartCheckoutComponent },
+  { path: 'login', component: SigninComponent },
+  { path: 'signup', component: SignupComponent }
 ];
 
 @NgModule({

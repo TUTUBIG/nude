@@ -26,10 +26,7 @@ export class ListComponent implements OnInit {
         if (category == null) {
           category = defaultCategory;
         }
-        const req: GoodListRequest = {
-          category,
-        };
-        return this.backend.getGoodList(req);
+        return this.backend.getGoodList(category);
       }
     )
     );

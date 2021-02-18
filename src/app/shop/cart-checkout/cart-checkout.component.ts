@@ -1,4 +1,7 @@
 import {Component, OnInit, SimpleChange} from '@angular/core';
+import {switchMap} from 'rxjs/operators';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {GoodListResponse, GoodSimpleInfo, WhisperService} from '../../whisper.service';
 
 interface CartGoodInfo {
   name: string;
@@ -26,28 +29,30 @@ export class CartCheckoutComponent implements OnInit {
     shipFee: 2.32,
     total: 11.21
   };
-  goods: CartGoodInfo[] = [
-    {
-      name: 'I\'m a product',
-      price: 30.00,
-      count: 6,
-      image: 'assets/cart/1.jpg',
-    },
-    {
-      name: 'Face Gloss',
-      price: 50.00,
-      count: 1,
-      image: 'assets/cart/2.png',
-    },
-    {
-      name: 'Satin Powder Blush',
-      price: 20.00,
-      count: 1,
-      image: 'assets/cart/3.png',
-    },
-  ];
+  goods: GoodSimpleInfo[] = [];
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private backend: WhisperService
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const res = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+          const uid = params.get('uid');
+          if (uid == null || uid === '') {
+            console.error('uid is empty', uid);
+          }
+          return this.backend.getCartGoodList(uid);
+        }
+      )
+    );
+
+    res.subscribe(data => {
+      const resBody = data as GoodListResponse;
+      this.goods = resBody.goods;
+      console.log('list: ', resBody.goods);
+    });
+  }
 }

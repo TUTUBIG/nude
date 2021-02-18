@@ -12,6 +12,7 @@ export interface GoodSimpleInfo {
   description: string;
   price: number;
   skuId: string;
+  quantities: number;
 }
 
 export interface GoodListResponse {
@@ -36,6 +37,7 @@ export class WhisperService {
   loginUrl = 'http://localhost:8080/login';
   registerUrl = 'http://localhost:8080/register';
   listGoodUrl = 'http://localhost:8080/good-list';
+  listCartGoodsUrl = 'http://localhost:8080/good-list';
 
   private static handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
@@ -58,11 +60,20 @@ export class WhisperService {
     return this.http.post(this.registerUrl, request).pipe(catchError(WhisperService.handleError));
   }
 
-  getGoodList(request: GoodListRequest): Observable<any> {
+  getGoodList(category: string): Observable<any> {
     let params = new HttpParams();
-    params = params.set('category', request.category);
+    params = params.set('category', category);
 
     return this.http.get(this.listGoodUrl, {
+      params,
+    }).pipe(catchError(WhisperService.handleError));
+  }
+
+  getCartGoodList(uid: string | null): Observable<any> {
+    let params = new HttpParams();
+    params = params.set('uid', uid);
+
+    return this.http.get(this.listCartGoodsUrl, {
       params,
     }).pipe(catchError(WhisperService.handleError));
   }

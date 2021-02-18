@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
@@ -33,7 +33,6 @@ export interface SignInResponse {
 export class WhisperService {
 
   constructor(private http: HttpClient) { }
-/**/
   loginUrl = 'http://localhost:8080/login';
   registerUrl = 'http://localhost:8080/register';
   listGoodUrl = 'http://localhost:8080/good-list';
@@ -60,6 +59,11 @@ export class WhisperService {
   }
 
   getGoodList(request: GoodListRequest): Observable<any> {
-    return this.http.post(this.listGoodUrl, request).pipe(catchError(WhisperService.handleError));
+    let params = new HttpParams();
+    params = params.set('category', request.category);
+
+    return this.http.get(this.listGoodUrl, {
+      params,
+    }).pipe(catchError(WhisperService.handleError));
   }
 }

@@ -20,13 +20,12 @@ export class ListComponent implements OnInit {
   goodList: GoodSimpleInfo[] = [];
 
   ngOnInit(): void {
-    const resBody = this.route.paramMap.pipe(
+    const res = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
         let category = params.get('category');
         if (category == null) {
           category = defaultCategory;
         }
-        console.log('category', category);
         const req: GoodListRequest = {
           category,
         };
@@ -35,11 +34,10 @@ export class ListComponent implements OnInit {
     )
     );
 
-    resBody.subscribe(data => {
-      console.log(data);
-      const res = data as GoodListResponse;
-      this.goodList = res.goods;
-      console.log('list: ', res.goods);
+    res.subscribe(data => {
+      const resBody = data as GoodListResponse;
+      this.goodList = resBody.goods;
+      console.log('list: ', resBody.goods);
   });
 }
 

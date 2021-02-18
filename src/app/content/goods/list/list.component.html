@@ -1,10 +1,10 @@
 <div style="width: 1000px">
   <mat-grid-list rowHeight="500px" cols="3" gutterSize="2px" class="mat-grid-list">
-    <mat-grid-tile *ngFor="let image of images">
+    <mat-grid-tile *ngFor="let good of goodList">
       <div style="font-family: serif">
-        <img src="{{ image }}" alt="resource not exist">
-        <p>Satin Powder Blush</p>
-        <p>$ 20.00</p>
+        <img src="{{ good.imageUrl }}" alt="resource not exist">
+        <p>{{ good.description }}</p>
+        <p>$ {{ good.price }}</p>
         <div class="number-increase-decrease">
           <span>-</span>
           <span>1</span>

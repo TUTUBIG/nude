@@ -18,7 +18,7 @@
 </mat-toolbar-row>
   <mat-toolbar-row class="tool-nav">
     <a routerLink="/home" mat-flat-button disableRipple>HOME</a>
-    <a routerLink="/shop" mat-flat-button disableRipple [matMenuTriggerFor]="belowMenu">SHOP</a>
+    <a mat-flat-button disableRipple [matMenuTriggerFor]="belowMenu">SHOP</a>
     <a routerLink="/press" mat-flat-button disableRipple>PRESS</a>
     <a routerLink="/about" mat-flat-button disableRipple>ABOUT</a>
     <a routerLink="/contact" mat-flat-button disableRipple>CONTACT</a>
@@ -26,8 +26,8 @@
 </mat-toolbar>
 
 <mat-menu #belowMenu="matMenu" yPosition="below" class="custom-menu">
-  <a mat-menu-item disableRipple>EYES</a>
-  <a mat-menu-item disableRipple>LIPS</a>
-  <a mat-menu-item disableRipple>FACE</a>
-  <a mat-menu-item disableRipple>CHEEKS</a>
+  <a routerLink="/shop/eyes" mat-menu-item disableRipple>EYES</a>
+  <a routerLink="/shop/lips" mat-menu-item disableRipple>LIPS</a>
+  <a routerLink="/shop/face" mat-menu-item disableRipple>FACE</a>
+  <a routerLink="/shop/cheeks" mat-menu-item disableRipple>CHEEKS</a>
 </mat-menu>

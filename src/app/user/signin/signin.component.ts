@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginRequest, LoginResponse, UserService} from '../../user.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {matchValidator} from '../signup/signup.component';
+import {SignInResponse, SignInUpRequest, WhisperService} from '../../whisper.service';
 
 @Component({
   selector: 'app-signin',
@@ -9,7 +9,7 @@ import {matchValidator} from '../signup/signup.component';
   styleUrls: ['./signin.component.sass']
 })
 export class SigninComponent implements OnInit {
-  constructor(private backend: UserService) { }
+  constructor(private backend: WhisperService) { }
 
   get email(): FormControl {
     return this.emailLogin.get('email') as FormControl;
@@ -35,15 +35,13 @@ export class SigninComponent implements OnInit {
   });
 
   login(): void {
-    console.log('login components: ', this.email.value, this.password.value);
-    const loginRequest: LoginRequest = {
+    const req: SignInUpRequest = {
       email: this.email.value,
       password: this.password.value
     };
-    console.log('components: ', loginRequest);
-    this.backend.login(loginRequest).subscribe(data => {
-      const loginResponse = data as LoginResponse;
-      console.log('uid: ', loginResponse.uid);
+    this.backend.login(req).subscribe(data => {
+      const res = data as SignInResponse;
+      console.log('uid: ', res.uid);
     });
   }
 

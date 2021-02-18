@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {LoginRequest, UserService} from '../../user.service';
+import {SignInUpRequest, WhisperService} from '../../whisper.service';
+
 
 
 export const matchValidator: ValidatorFn = (inputAB: AbstractControl): ValidationErrors | null => {
@@ -23,7 +24,7 @@ export const matchValidator: ValidatorFn = (inputAB: AbstractControl): Validatio
 
 export class SignupComponent implements OnInit {
 
-  constructor(private backend: UserService) { }
+  constructor(private backend: WhisperService) { }
 
   get email(): FormControl {
     return this.emailLogin.get('email') as FormControl;
@@ -49,7 +50,7 @@ export class SignupComponent implements OnInit {
   });
 
   signup(): void {
-    const loginRequest: LoginRequest = {
+    const loginRequest: SignInUpRequest = {
       email: this.email.value,
       password: this.password.value
     };

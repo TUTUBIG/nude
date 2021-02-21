@@ -24,10 +24,12 @@ import { ListComponent } from './content/goods/list/list.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PressComponent } from './content/press/press.component';
 import { AboutComponent } from './content/about/about.component';
-import { CartCheckoutComponent } from './shop/cart-checkout/cart-checkout.component';
 import { SideCartComponent } from './shop/side-cart/side-cart.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { SigninComponent } from './user/signin/signin.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {CartCheckoutComponent, UpdateDestinationDialogComponent} from './shop/cart-checkout/cart-checkout.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { SigninComponent } from './user/signin/signin.component';
     CartCheckoutComponent,
     SideCartComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    UpdateDestinationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,9 @@ import { SigninComponent } from './user/signin/signin.component';
     MatCarouselModule.forRoot(),
     MatGridListModule,
     CarouselModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

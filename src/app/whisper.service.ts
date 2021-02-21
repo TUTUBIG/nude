@@ -3,6 +3,12 @@ import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
+const loginUrl = 'http://localhost:8080/login';
+const registerUrl = 'http://localhost:8080/register';
+const listGoodUrl = 'http://localhost:8080/goods';
+const listCartGoodsUrl = 'http://localhost:8080/cart/goods';
+const checkoutUrl = 'http://localhost:8080/checkout';
+
 export interface GoodListRequest {
   category: string;
 }
@@ -12,7 +18,6 @@ export interface GoodSimpleInfo {
   description: string;
   price: number;
   skuId: string;
-  quantities: number;
 }
 
 export interface GoodListResponse {
@@ -28,16 +33,18 @@ export interface SignInResponse {
   uid: string;
 }
 
+export interface CheckoutRequest {
+  cart_ids: string[];
+  destination: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class WhisperService {
 
   constructor(private http: HttpClient) { }
-  loginUrl = 'http://localhost:8080/login';
-  registerUrl = 'http://localhost:8080/register';
-  listGoodUrl = 'http://localhost:8080/good-list';
-  listCartGoodsUrl = 'http://localhost:8080/good-list';
+
 
   private static handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
@@ -53,28 +60,34 @@ export class WhisperService {
   }
 
   login(request: SignInUpRequest): Observable<any> {
-    return this.http.post(this.loginUrl, request).pipe(catchError(WhisperService.handleError));
+    return this.http.post(loginUrl, request).pipe(catchError(WhisperService.handleError));
   }
 
   register(request: SignInUpRequest): Observable<any> {
-    return this.http.post(this.registerUrl, request).pipe(catchError(WhisperService.handleError));
+    return this.http.post(registerUrl, request).pipe(catchError(WhisperService.handleError));
   }
 
   getGoodList(category: string): Observable<any> {
     let params = new HttpParams();
     params = params.set('category', category);
 
-    return this.http.get(this.listGoodUrl, {
+    return this.http.get(listGoodUrl, {
       params,
     }).pipe(catchError(WhisperService.handleError));
   }
 
   getCartGoodList(uid: string | null): Observable<any> {
     let params = new HttpParams();
-    params = params.set('uid', uid);
+    if (typeof uid === 'string') {
+      params = params.set('uid', uid);
+    }
 
-    return this.http.get(this.listCartGoodsUrl, {
+    return this.http.get(listCartGoodsUrl, {
       params,
     }).pipe(catchError(WhisperService.handleError));
+  }
+
+  checkout(req: CheckoutRequest): Observable<any> {
+    return this.http.post(checkoutUrl, req).pipe(catchError(WhisperService.handleError));
   }
 }

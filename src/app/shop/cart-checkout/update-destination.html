@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Choose Delivery Destination</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-select required [(value)]="destination">
+      <mat-option value="cn">China</mat-option>
+      <mat-option value="us">United States </mat-option>
+      <mat-option value="uk">United Kingdom</mat-option>
+      <mat-option value="ca">Canada</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="destination">Ok</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</div>

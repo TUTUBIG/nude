@@ -6,20 +6,20 @@
         <div class="li-container">
           <div class="li-container-left">
             <span>
-              <img src="{{ good.image }}" alt="">
+              <img src="{{ good.imageUrl }}" alt="">
             </span>
             <div class="li-container-left-right">
-              <span>{{ good.name}}</span>
+              <span>{{ good.description}}</span>
               <span>${{ good.price }}</span>
               <div class="li-container-left-right-goods-count">
                 <button mat-flat-button disableRipple>-</button>
-                <span>{{ good.count }}</span>
+                <span>{{ good.quantities }}</span>
                 <button mat-flat-button disableRipple>+</button>
               </div>
             </div>
           </div>
           <div class="li-container-right">
-            <span>${{ good.price*good.count }}</span>
+            <span>${{ good.price * good.quantities }}</span>
             <button mat-icon-button disableRipple><mat-icon>clear</mat-icon></button>
           </div>
         </div>
@@ -35,12 +35,14 @@
       </p>
       <p>
         <span>Shipping</span>
-        <span>${{ summary.shipFee }}</span>
+        <span *ngIf="summary.shipFee === 0">Free</span>
+        <span *ngIf="summary.shipFee !== 0">${{ summary.shipFee }}</span>
       </p>
       <p>
-        <a>
-          {{ summary.shipDestination }}
-        </a>
+        <span>{{ summary.shipDestination }}</span>
+        <span>
+          <button mat-flat-button (click)="updateDestinationDialog()">Update</button>
+        </span>
       </p>
     </div>
     <div class="summary-bottom">

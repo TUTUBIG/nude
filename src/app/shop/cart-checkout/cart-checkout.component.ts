@@ -1,13 +1,13 @@
 import {Component, OnInit, SimpleChange} from '@angular/core';
 import {switchMap} from 'rxjs/operators';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {GoodListResponse, GoodSimpleInfo, WhisperService} from '../../whisper.service';
+import {CheckoutRequest, GoodListResponse, GoodSimpleInfo, WhisperService} from '../../whisper.service';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 interface CartGoodInfo {
-  name: string;
-  price: number;
-  count: number;
-  image: string;
+  id: string;
+  good: GoodSimpleInfo;
+  quantities: number;
 }
 
 interface SummaryInfo {
@@ -26,16 +26,41 @@ export class CartCheckoutComponent implements OnInit {
   summary: SummaryInfo = {
     subtotal: 123.23,
     shipDestination: 'Shanghai,China',
-    shipFee: 2.32,
+    shipFee: 0,
     total: 11.21
   };
-  goods: GoodSimpleInfo[] = [];
+  cartGoods: CartGoodInfo[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private backend: WhisperService
+    private backend: WhisperService,
+    public dialog: MatDialog
   ) { }
+
+  updateDestinationDialog(): void {
+    const dialogRef = this.dialog.open(UpdateDestinationDialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if (result !== undefined) {
+        this.summary.shipDestination = result;
+      }
+    });
+  }
+
+  checkout(): void {
+    for(var i in this.goods) {
+      this.goods[i].
+    }
+    const req: CheckoutRequest = {
+      cart_ids: [],
+      destination: '',
+    };
+    this.backend.checkout(req).subscribe();
+  }
 
   ngOnInit(): void {
     const res = this.route.paramMap.pipe(
@@ -51,8 +76,29 @@ export class CartCheckoutComponent implements OnInit {
 
     res.subscribe(data => {
       const resBody = data as GoodListResponse;
+      const cartGood: CartGoodInfo = {
+
+      };
+      this.cartGoods.push();
       this.goods = resBody.goods;
       console.log('list: ', resBody.goods);
     });
   }
+}
+
+@Component({
+  selector: 'app-update-destination',
+  templateUrl: 'update-destination.html',
+})
+export class UpdateDestinationDialogComponent {
+  destination = 'cn';
+
+  constructor(
+    public dialogRef: MatDialogRef<UpdateDestinationDialogComponent>
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }

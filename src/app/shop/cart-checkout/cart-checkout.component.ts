@@ -1,14 +1,10 @@
 import {Component, OnInit, SimpleChange} from '@angular/core';
 import {switchMap} from 'rxjs/operators';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {CheckoutRequest, GoodListResponse, GoodSimpleInfo, WhisperService} from '../../whisper.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {CartGoodInfo, CartGoodListResponse, CheckoutRequest, GoodListResponse, GoodSimpleInfo, WhisperService} from '../../whisper.service';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
-interface CartGoodInfo {
-  id: string;
-  good: GoodSimpleInfo;
-  quantities: number;
-}
+
 
 interface SummaryInfo {
   subtotal: number;
@@ -52,12 +48,13 @@ export class CartCheckoutComponent implements OnInit {
   }
 
   checkout(): void {
-    for(var i in this.goods) {
-      this.goods[i].
+    const ids = [];
+    for (const good of this.cartGoods) {
+      ids.push(good.id);
     }
     const req: CheckoutRequest = {
-      cart_ids: [],
-      destination: '',
+      cart_ids: ids,
+      destination: this.summary.shipDestination,
     };
     this.backend.checkout(req).subscribe();
   }
@@ -75,12 +72,8 @@ export class CartCheckoutComponent implements OnInit {
     );
 
     res.subscribe(data => {
-      const resBody = data as GoodListResponse;
-      const cartGood: CartGoodInfo = {
-
-      };
-      this.cartGoods.push();
-      this.goods = resBody.goods;
+      const resBody = data as CartGoodListResponse;
+      this.cartGoods = resBody.goods;
       console.log('list: ', resBody.goods);
     });
   }

@@ -14,14 +14,24 @@ export interface GoodListRequest {
 }
 
 export interface GoodSimpleInfo {
-  imageUrl: string;
+  image_url: string;
   description: string;
   price: number;
-  skuId: string;
+  sku_id: string;
+}
+
+export interface CartGoodInfo {
+  id: string;
+  good: GoodSimpleInfo;
+  quantities: number;
 }
 
 export interface GoodListResponse {
   goods: GoodSimpleInfo[];
+}
+
+export interface CartGoodListResponse {
+  goods: CartGoodInfo[];
 }
 
 export interface SignInUpRequest {

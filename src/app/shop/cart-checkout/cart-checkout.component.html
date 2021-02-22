@@ -2,15 +2,15 @@
   <div class="cart">
     <span class="title">My Cart</span>
     <ul>
-      <li *ngFor="let good of goods">
+      <li *ngFor="let good of cartGoods">
         <div class="li-container">
           <div class="li-container-left">
             <span>
-              <img src="{{ good.imageUrl }}" alt="">
+              <img src="{{ good.good.image_url }}" alt="">
             </span>
             <div class="li-container-left-right">
-              <span>{{ good.description}}</span>
-              <span>${{ good.price }}</span>
+              <span>{{ good.good.description}}</span>
+              <span>${{ good.good.price }}</span>
               <div class="li-container-left-right-goods-count">
                 <button mat-flat-button disableRipple>-</button>
                 <span>{{ good.quantities }}</span>
@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="li-container-right">
-            <span>${{ good.price * good.quantities }}</span>
+            <span>${{ good.good.price * good.quantities }}</span>
             <button mat-icon-button disableRipple><mat-icon>clear</mat-icon></button>
           </div>
         </div>

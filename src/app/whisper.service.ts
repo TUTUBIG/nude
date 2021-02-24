@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {MatDialog} from "@angular/material/dialog";
 
-const loginUrl = 'http://localhost:8080/login';
-const registerUrl = 'http://localhost:8080/register';
-const listGoodUrl = 'http://localhost:8080/goods';
-const listCartGoodsUrl = 'http://localhost:8080/cart/goods';
-const checkoutUrl = 'http://localhost:8080/checkout';
+const host = 'http://www.e2bao.com:8080'
+
+const loginUrl = host + '/login';
+const registerUrl = host + '/register';
+const listGoodUrl = host + '/goods';
+const listCartGoodsUrl = host + '/cart/goods';
+const checkoutUrl = host + '/checkout';
 
 export interface GoodListRequest {
   category: string;
@@ -53,8 +56,10 @@ export interface CheckoutRequest {
 })
 export class WhisperService {
 
-  constructor(private http: HttpClient) { }
-
+  constructor(
+    private http: HttpClient,
+    public dialog: MatDialog
+  ) { }
 
   private static handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
@@ -64,6 +69,7 @@ export class WhisperService {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
       console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
+      alert(error.message);
     }
     // Return an observable with a user-facing error message.
     return throwError('Something bad happened; please try again later.');

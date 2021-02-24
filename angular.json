@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "nude": {
+    "whisper-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/nude",
+            "outputPath": "dist/whisper-front",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,18 +72,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "nude:build"
+            "browserTarget": "whisper-front:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "nude:build:production"
+              "browserTarget": "whisper-front:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nude:build"
+            "browserTarget": "whisper-front:build"
           }
         },
         "test": {
@@ -121,16 +121,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "nude:serve"
+            "devServerTarget": "whisper-front:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "nude:serve:production"
+              "devServerTarget": "whisper-front:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "nude"
+  "defaultProject": "whisper-front"
 }

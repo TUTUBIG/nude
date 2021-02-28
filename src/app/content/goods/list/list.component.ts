@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GoodListRequest, GoodListResponse, GoodSimpleInfo, WhisperService} from '../../../whisper.service';
+import { GoodListResponse, GoodSimpleInfo, WhisperService} from '../../../whisper.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 
@@ -19,6 +19,10 @@ export class ListComponent implements OnInit {
 
   goodList: GoodSimpleInfo[] = [];
 
+  addCart(skuId: string, quantities: number): void {
+    this.backend.addCart(skuId, quantities).subscribe();
+  }
+
   ngOnInit(): void {
     const res = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
@@ -34,6 +38,10 @@ export class ListComponent implements OnInit {
     res.subscribe(data => {
       const resBody = data as GoodListResponse;
       this.goodList = resBody.goods;
+      // tslint:disable-next-line:forin
+      for (const i in this.goodList) {
+        this.goodList[i].quantities = 1;
+      }
       console.log('list: ', resBody.goods);
   });
 }

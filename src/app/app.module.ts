@@ -29,6 +29,7 @@ import { SignupComponent } from './user/signup/signup.component';
 import { SigninComponent } from './user/signin/signin.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import {CartCheckoutComponent, UpdateDestinationDialogComponent} from './shop/cart-checkout/cart-checkout.component';
 
 @NgModule({
@@ -64,6 +65,7 @@ import {CartCheckoutComponent, UpdateDestinationDialogComponent} from './shop/ca
     CarouselModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatSidenavModule,
     MatSelectModule
   ],
   providers: [],

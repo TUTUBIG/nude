@@ -2,18 +2,21 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {MatDialog} from "@angular/material/dialog";
+import {MatDialog} from '@angular/material/dialog';
 
-const host = 'http://www.e2bao.com:8080'
+const hostC = 'http://www.e2bao.com:8080';
+const host = 'http://localhost:8080';
 
 const loginUrl = host + '/login';
 const registerUrl = host + '/register';
 const listGoodUrl = host + '/goods';
 const listCartGoodsUrl = host + '/cart/goods';
 const checkoutUrl = host + '/checkout';
+const addToCart = host + '/cart';
 
-export interface GoodListRequest {
-  category: string;
+interface AddCartRequest {
+  sku_id: string;
+  quantities: number;
 }
 
 export interface GoodSimpleInfo {
@@ -21,6 +24,7 @@ export interface GoodSimpleInfo {
   description: string;
   price: number;
   sku_id: string;
+  quantities: number;
 }
 
 export interface CartGoodInfo {
@@ -105,5 +109,13 @@ export class WhisperService {
 
   checkout(req: CheckoutRequest): Observable<any> {
     return this.http.post(checkoutUrl, req).pipe(catchError(WhisperService.handleError));
+  }
+
+  addCart(skuId: string, quantities: number): Observable<any> {
+    const req: AddCartRequest = {
+      sku_id: skuId,
+      quantities,
+    };
+    return this.http.post(addToCart, req).pipe(catchError(WhisperService.handleError));
   }
 }

@@ -39,10 +39,7 @@ export class SigninComponent implements OnInit {
       email: this.email.value,
       password: this.password.value
     };
-    this.backend.login(req).subscribe(data => {
-      const res = data as SignInResponse;
-      console.log('uid: ', res.uid);
-    });
+    this.backend.login(req).subscribe();
   }
 
   ngOnInit(): void {}

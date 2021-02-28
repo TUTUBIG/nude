@@ -6,12 +6,14 @@
         <p>{{ good.description }}</p>
         <p>$ {{ good.price }}</p>
         <div class="number-increase-decrease">
-          <span>-</span>
-          <span>1</span>
-          <span>+</span>
+          <button mat-flat-button disableRipple (click)="good.quantities = good.quantities - 1">-</button>
+          <span>{{ good.quantities }}</span>
+          <button mat-flat-button disableRipple (click)="good.quantities = good.quantities + 1">+</button>
         </div>
-        <p style="text-align: center;margin-top: 10px"><a>ADD TO CART></a></p>
+        <p style="text-align: center;margin-top: 10px"><button mat-flat-button disableRipple (click)="addCart(good.sku_id,good.quantities)">ADD TO CART></button></p>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+
+

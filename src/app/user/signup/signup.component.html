@@ -9,18 +9,30 @@
     </p>
   </div>
   <form [formGroup]="emailLogin" (ngSubmit)="signup()" class="login-input">
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <label>
-        <input type="email" matInput [formControl]="email" required>
-      </label>
-      <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
-        Please enter a valid email address
-      </mat-error>
-      <mat-error *ngIf="email.hasError('required')">
-        Email is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
+    <P>
+      <mat-form-field appearance="fill">
+        <mat-label>Nick Name</mat-label>
+        <label>
+          <input matInput [formControl]="nickname" required>
+        </label>
+        <mat-error *ngIf="email.hasError('required')">Nick Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </P>
+    <P>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <label>
+          <input type="email" matInput [formControl]="email" required>
+        </label>
+        <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </P>
     <P>
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>

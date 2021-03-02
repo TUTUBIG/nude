@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {matchValidator} from '../signup/signup.component';
-import {SignInResponse, SignInUpRequest, WhisperService} from '../../whisper.service';
+import {SignInRequest, WhisperService} from '../../whisper.service';
 
 @Component({
   selector: 'app-signin',
@@ -35,9 +35,9 @@ export class SigninComponent implements OnInit {
   });
 
   login(): void {
-    const req: SignInUpRequest = {
+    const req: SignInRequest = {
       email: this.email.value,
-      password: this.password.value
+      password: this.password.value,
     };
     this.backend.login(req).subscribe();
   }

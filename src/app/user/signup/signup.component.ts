@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {SignInUpRequest, WhisperService} from '../../whisper.service';
-
-
+import {SignUpRequest, WhisperService} from '../../whisper.service';
 
 export const matchValidator: ValidatorFn = (inputAB: AbstractControl): ValidationErrors | null => {
   const inputA = inputAB.get('password') as FormControl;
@@ -30,6 +28,10 @@ export class SignupComponent implements OnInit {
     return this.emailLogin.get('email') as FormControl;
   }
 
+  get nickname(): FormControl {
+    return this.emailLogin.get('nickname') as FormControl;
+  }
+
   get password(): FormControl {
     return this.emailLogin.get('passwordFormControl')?.get('password') as FormControl;
   }
@@ -43,6 +45,9 @@ export class SignupComponent implements OnInit {
       Validators.required,
       Validators.email,
     ]),
+    nickname: new FormControl('', [
+      Validators.required,
+    ]),
     passwordFormControl: new FormGroup({
       password: new FormControl('', Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$')),
       confirm: new FormControl(),
@@ -50,9 +55,10 @@ export class SignupComponent implements OnInit {
   });
 
   signup(): void {
-    const loginRequest: SignInUpRequest = {
+    const loginRequest: SignUpRequest = {
       email: this.email.value,
-      password: this.password.value
+      password: this.password.value,
+      nick_name: this.nickname.value,
     };
     this.backend.register(loginRequest).subscribe();
   }

@@ -41,9 +41,15 @@ export interface CartGoodListResponse {
   goods: CartGoodInfo[];
 }
 
-export interface SignInUpRequest {
+export interface SignInRequest {
   email: string;
   password: string;
+}
+
+export interface SignUpRequest {
+  email: string;
+  password: string;
+  nick_name: string;
 }
 
 export interface SignInResponse {
@@ -79,11 +85,11 @@ export class WhisperService {
     return throwError('Something bad happened; please try again later.');
   }
 
-  login(request: SignInUpRequest): Observable<any> {
+  login(request: SignInRequest): Observable<any> {
     return this.http.post(loginUrl, request).pipe(catchError(WhisperService.handleError));
   }
 
-  register(request: SignInUpRequest): Observable<any> {
+  register(request: SignUpRequest): Observable<any> {
     return this.http.post(registerUrl, request).pipe(catchError(WhisperService.handleError));
   }
 

@@ -49,7 +49,11 @@ export interface SignInRequest {
 export interface SignUpRequest {
   email: string;
   password: string;
-  nick_name: string;
+  nick_na
+
+
+
+  me: string;
 }
 
 export interface SignInResponse {
